@@ -1,4 +1,0 @@
-package org.openjdk.jmh.samples.generated;
-public class JMHSample_07_FixtureLevelInvocation_Scratch_jmhType extends JMHSample_07_FixtureLevelInvocation_Scratch_jmhType_B3 {
-}
-

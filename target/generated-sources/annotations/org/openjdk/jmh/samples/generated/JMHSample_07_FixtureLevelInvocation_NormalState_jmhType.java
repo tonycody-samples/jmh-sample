@@ -1,4 +1,0 @@
-package org.openjdk.jmh.samples.generated;
-public class JMHSample_07_FixtureLevelInvocation_NormalState_jmhType extends JMHSample_07_FixtureLevelInvocation_NormalState_jmhType_B3 {
-}
-
