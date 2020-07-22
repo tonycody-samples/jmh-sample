@@ -31,14 +31,27 @@
 
 package com.ly.jmh.sample;
 
+import java.util.concurrent.TimeUnit;
 import org.openjdk.jmh.annotations.Benchmark;
+import org.openjdk.jmh.annotations.Fork;
+import org.openjdk.jmh.annotations.Measurement;
+import org.openjdk.jmh.annotations.Warmup;
 
 public class MyBenchmark {
 
+    /**
+     * 测试方法
+     *
+     * @throws InterruptedException 中断异常
+     */
     @Benchmark
-    public void testMethod() {
+    @Warmup(iterations = 1,time = 1)
+    @Measurement(iterations = 1,time = 1)
+    @Fork(1)
+    public void testMethod() throws InterruptedException {
         // This is a demo/sample template for building your JMH benchmarks. Edit as needed.
         // Put your benchmark code here.
+        System.out.println("exec");
+        TimeUnit.SECONDS.sleep(3);
     }
-
 }
