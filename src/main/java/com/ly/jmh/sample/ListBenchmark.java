@@ -31,7 +31,7 @@ public class ListBenchmark {
 
     @State(Scope.Thread)
     public static class ArrayClass {
-        public List<String> list;
+        public ArrayList<String> list;
 
         @Setup(Level.Trial)
         public void setup() {
@@ -46,7 +46,7 @@ public class ListBenchmark {
 
     @State(Scope.Thread)
     public static class LinkedClass {
-        public List<String> list;
+        public LinkedList<String> list;
 
         @Setup(Level.Trial)
         public void setup() {
