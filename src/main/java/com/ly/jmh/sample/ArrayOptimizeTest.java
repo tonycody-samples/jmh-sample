@@ -20,33 +20,45 @@ import org.openjdk.jmh.runner.RunnerException;
 import org.openjdk.jmh.runner.options.Options;
 import org.openjdk.jmh.runner.options.OptionsBuilder;
 
-@BenchmarkMode(Mode.Throughput) // 测试完成时间
+/**
+ * 数组优化测试
+ *
+ * @author whq46936
+ * @date 2020/07/28
+ */
+// 测试完成时间
+@BenchmarkMode(Mode.Throughput)
 @OutputTimeUnit(TimeUnit.NANOSECONDS)
-@Warmup(iterations = 2, time = 1, timeUnit = TimeUnit.SECONDS) // 预热次数和时间
-@Measurement(iterations = 2, time = 5, timeUnit = TimeUnit.SECONDS) // 测试次数和时间
-@Fork(1) // fork 1 个线程
+// 预热次数和时间
+@Warmup(iterations = 2, time = 1, timeUnit = TimeUnit.SECONDS)
+// 测试次数和时间
+@Measurement(iterations = 2, time = 5, timeUnit = TimeUnit.SECONDS)
+// fork 1 个JVM进程
+@Fork(1)
 @State(Scope.Thread)
 public class ArrayOptimizeTest {
 
-    private static final int maxSize = 1000; // 测试循环次数
-    private static final int operationSize = 100; // 操作次数
+    // 测试循环次数
+    private static final int           maxSize       = 1000;
+    // 操作次数
+    private static final int           operationSize = 100;
 
-
-    private static ArrayList<Integer> arrayList;
+    private static ArrayList<Integer>  arrayList;
     private static LinkedList<Integer> linkedList;
 
     public static void main(String[] args) throws RunnerException {
         // 启动基准测试
-        Options opt = new OptionsBuilder()
-                .include(ArrayOptimizeTest.class.getSimpleName()) // 要导入的测试类
-                .build();
-        new Runner(opt).run(); // 执行测试
+        // 要导入的测试类
+        Options opt = new OptionsBuilder().include(ArrayOptimizeTest.class.getSimpleName())
+                                          .build();
+        // 执行测试
+        new Runner(opt).run();
     }
 
     @Setup
     public void init() {
         // 启动执行事件
-        arrayList = new ArrayList<Integer>();
+        arrayList  = new ArrayList<Integer>();
         linkedList = new LinkedList<Integer>();
         for (int i = 0; i < maxSize; i++) {
             arrayList.add(i);
@@ -54,7 +66,7 @@ public class ArrayOptimizeTest {
         }
     }
 
-	@Benchmark
+    @Benchmark
     public void addArrayByFirst(Blackhole blackhole) {
         for (int i = 0; i < +operationSize; i++) {
             arrayList.add(i, i);
