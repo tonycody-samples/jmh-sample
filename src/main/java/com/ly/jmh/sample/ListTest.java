@@ -19,8 +19,8 @@ public class ListTest {
 //        for (int i = 0; i < 1000_0000; i++) {
 //            array.add(0, "1");
 //        }
-        for (int i = 0; i < 10380988; i++) {
-            array.add("1");
+        for (int i = 0; i < 103808850; i++) {
+            array.add("1"+i);
         }
         long end = System.currentTimeMillis();
         System.out.println("arrayList:" + (end - start) + ",size:" + array.size());
@@ -32,8 +32,8 @@ public class ListTest {
 //        for (int i = 0; i < 1000_0000; i++) {
 //            linked.add("1");
 //        }
-        for (int i = 0; i < 10380988; i++) {
-            linked.add("1");
+        for (int i = 0; i < 103808850; i++) {
+            linked.add("1"+i);
         }
         long end = System.currentTimeMillis();
         System.out.println("linkedList:" + (end - start) + ",size:" + linked.size());
